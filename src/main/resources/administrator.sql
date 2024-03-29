@@ -1,0 +1,5 @@
+insert into administrator (company_id, first_name, last_name, address, email, username, password) values (1, 'Lorilee', 'Dole', '3 Columbus Crossing', 'ldole0@intel.com', 'ldole0', 'aD4"0fqOD');
+insert into administrator (company_id, first_name, last_name, address, email, username, password) values (2, 'Gaspard', 'Desporte', '7009 Magdeline Terrace', 'gdesporte1@cornell.edu', 'gdesporte1', 'pU2`s''iS=CBF7');
+insert into administrator (company_id, first_name, last_name, address, email, username, password) values (3, 'Vivianna', 'Adamovitz', '0942 Montana Plaza', 'vadamovitz2@prnewswire.com', 'vadamovitz2', 'cU6+|aP,)@k=8');
+insert into administrator (company_id, first_name, last_name, address, email, username, password) values (4, 'Lelah', 'Matteucci', '9 Nevada Place', 'lmatteucci3@mysql.com', 'lmatteucci3', 'xK5@W>Wd$V+');
+insert into administrator (company_id, first_name, last_name, address, email, username, password) values (5, 'Darleen', 'Lauritsen', '365 Raven Circle', 'dlauritsen4@surveymonkey.com', 'dlauritsen4', 'xB7`Hz{xZKeIVwh\');

@@ -1,22 +1,26 @@
 package com.skillstorm.inventorymanagement.Model;
 
 
+import com.skillstorm.inventorymanagement.Validation.Address;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "administrator")
 public class Administrator {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "admin_id")
     private long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "company_id")
     private Company company;
 
@@ -29,6 +33,7 @@ public class Administrator {
     private String lastName;
 
     @Column
+    @Address
     private String address;
 
     @Column(unique = true)
@@ -40,7 +45,8 @@ public class Administrator {
     private String username;
 
     @Column
-    @NotNull
     private String password;
 
+    public Administrator(Company company, String firstName, String lastName, String address, String email, String username, String password) {
+    }
 }

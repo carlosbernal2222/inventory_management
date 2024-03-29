@@ -27,8 +27,12 @@ public class Product {
     @Column
     private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
     @Column
-    private String category;
+    private String type;
 
     @Column
     private boolean refrigerated;

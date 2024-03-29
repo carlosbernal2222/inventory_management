@@ -1,5 +1,6 @@
 package com.skillstorm.inventorymanagement.Model;
 
+import com.skillstorm.inventorymanagement.Validation.Address;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,8 +21,10 @@ public class Company {
     @Column
     private String name;
     @Column
+    @Address
     private String address;
-    @Column
+
+    @Column(name="phone_number")
     private String phoneNumber;
     @Column
     private String industry;

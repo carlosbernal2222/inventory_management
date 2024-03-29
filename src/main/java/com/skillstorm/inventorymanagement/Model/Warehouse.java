@@ -1,5 +1,6 @@
 package com.skillstorm.inventorymanagement.Model;
 
+import com.skillstorm.inventorymanagement.Validation.Address;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -25,8 +26,19 @@ public class Warehouse {
     @Column
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @Address
     @Column
     private String address;
+
+    @OneToMany(mappedBy = "sourceWarehouse", cascade = CascadeType.ALL)
+    private List<Transfer> transfersSent;
+
+    @OneToMany(mappedBy = "destinationWarehouse", cascade = CascadeType.ALL)
+    private List<Transfer> transfersReceived;
 
     @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL)
     private List<Inventory> inventoryList;

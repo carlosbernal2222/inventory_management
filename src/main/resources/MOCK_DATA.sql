@@ -1,0 +1,15 @@
+insert into company (name, address, phone_number, industry, description) values ('Rhyloo', '12 Prairie Rose Parkway', '132-327-4109', 'Medical Specialities', 'Inj musc/fasc/tend long head of biceps, left arm');
+insert into company (name, address, phone_number, industry, description) values ('Yodel', '6 Badeau Point', '584-376-0831', 'n/a', 'Superficial foreign body of right thumb, sequela');
+insert into company (name, address, phone_number, industry, description) values ('Brightdog', '14 Hanson Parkway', '541-161-2213', 'n/a', 'Unsp injury of flexor musc/fasc/tend left thumb at forarm lv');
+insert into company (name, address, phone_number, industry, description) values ('Twitterbeat', '8996 Mendota Pass', '360-725-0328', 'Television Services', 'Diseases of the circ sys complicating the puerperium');
+insert into company (name, address, phone_number, industry, description) values ('Gabvine', '63 Stephen Street', '851-361-4967', 'Savings Institutions', 'Total traumatic cataract, bilateral');
+insert into company (name, address, phone_number, industry, description) values ('Yozio', '605 Knutson Plaza', '339-637-6461', 'Precious Metals', 'Strain of unsp msl/tnd at ank/ft level, right foot, subs');
+insert into company (name, address, phone_number, industry, description) values ('Oyoba', '975 Hauk Circle', '110-905-9883', 'Packaged Foods', 'Pneumonia due to staphylococcus aureus');
+insert into company (name, address, phone_number, industry, description) values ('Ozu', '33 Amoth Hill', '188-673-8309', 'Packaged Foods', 'Disp fx of base of neck of unspecified femur, sequela');
+insert into company (name, address, phone_number, industry, description) values ('Skyble', '31 Londonderry Point', '206-555-5603', 'Electric Utilities: Central', 'Path fx in neopltc dis, unsp site, subs for fx w nonunion');
+insert into company (name, address, phone_number, industry, description) values ('Quinu', '927 Sachs Way', '857-894-8541', 'Industrial Specialties', 'Malignant neoplasm of connective and soft tissue of thorax');
+insert into company (name, address, phone_number, industry, description) values ('Oyoloo', '05 Colorado Parkway', '229-498-6672', 'n/a', 'Insect bite (nonvenomous), left great toe');
+insert into company (name, address, phone_number, industry, description) values ('Meevee', '13 Longview Point', '505-193-7335', 'Biotechnology: Biological Products (No Diagnostic Substances)', 'Nondisp fx of ant process of r calcaneus, init for opn fx');
+insert into company (name, address, phone_number, industry, description) values ('Voonder', '78 Goodland Center', '971-857-0184', 'Computer Software: Prepackaged Software', 'Pre-existing hypertensive heart disease compl preg/chldbrth');
+insert into company (name, address, phone_number, industry, description) values ('Bubbletube', '5 Hallows Court', '507-835-9829', 'EDP Services', 'Oth transitory neonatal disord of calcium & magnesium metab');
+insert into company (name, address, phone_number, industry, description) values ('Livetube', '11 Surrey Hill', '196-720-3216', 'Industrial Machinery/Components', 'Oth stimulant use, unsp with stimulant-induced mood disorder');
