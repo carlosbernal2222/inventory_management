@@ -9,9 +9,10 @@ import java.util.Optional;
 
 public interface ProductService {
     List<Product> getAllProducts();
-    Optional<Product> getProductById(Long id);
+    Optional<Product> getProductById(Long id) throws Exception;
+    Product  updateProduct(Product product) throws Exception;
     Product saveProduct(Product product);
     List<Product> saveMultipleProducts(List<Product> products);
-    void deleteProduct(Long id);
+    boolean deleteProduct(Long id);
 
 }

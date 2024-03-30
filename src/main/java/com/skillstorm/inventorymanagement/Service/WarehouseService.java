@@ -12,14 +12,14 @@ public interface WarehouseService {
 
     // Read operations
     List<Warehouse> getAllWarehouses();
-    Optional<Warehouse> getWarehouseById(Long id);
+    Optional<Warehouse> getWarehouseById(Long id) throws Exception;
 
 
     // Update operation
-    Warehouse updateWarehouse(Warehouse warehouse);
+    Warehouse updateWarehouse(Warehouse warehouse) throws Exception;
 
 
     // Delete operation
-    void deleteWarehouse(Long id);
+    boolean deleteWarehouse(Long id);
 
 }

@@ -2,6 +2,7 @@ package com.skillstorm.inventorymanagement.Controller;
 
 import com.skillstorm.inventorymanagement.Model.Administrator;
 import com.skillstorm.inventorymanagement.Model.Company;
+import com.skillstorm.inventorymanagement.Model.Product;
 import com.skillstorm.inventorymanagement.Service.CompanyService;
 import com.skillstorm.inventorymanagement.Service.CompanyServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +68,26 @@ public class CompanyController {
      * END OF READ OPERATIONS
      * ************************************
      */
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Company> updateCompany(@PathVariable Long id, @RequestBody Company companyDetails) {
+        try {
+            Company updatedCompany = companyService.updateCompany(id, companyDetails);
+            return ResponseEntity.ok(updatedCompany);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @DeleteMapping ({"/{id}"})
+    public ResponseEntity<Void> deleteCompany(@PathVariable Long id){
+       boolean isDeleted = companyService.deleteCompany(id);
+       if(isDeleted){
+           return ResponseEntity.ok().build();
+       }else{
+           return ResponseEntity.notFound().build();
+       }
+    }
 
 
 }
