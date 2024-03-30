@@ -2,6 +2,7 @@ package com.skillstorm.inventorymanagement.Service;
 
 
 import com.skillstorm.inventorymanagement.Model.Administrator;
+import com.skillstorm.inventorymanagement.Model.Company;
 import com.skillstorm.inventorymanagement.Repository.AdministratorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,13 +38,34 @@ public class AdministratorServiceImpl implements AdministratorService {
     }
 
     @Override
-    public Administrator updateAdmin(Administrator admin) throws Exception {
+    public Administrator updateAdmin(Long id, Administrator adminDetails) throws Exception {
         // Logic to update an admin. Checks if the admin exists before proceeding.
-        if (administratorRepository.existsById(admin.getId())) {
-            return administratorRepository.save(admin);
-        } else {
-            throw new Exception("Administrator not found with ID: " + admin.getId());
+        Administrator admin = administratorRepository.findById(id)
+                .orElseThrow(() -> new Exception("Administrator not found with ID: " + id));
+
+        if (adminDetails.getFirstName() != null) {
+            admin.setFirstName(adminDetails.getFirstName());
         }
+        if (adminDetails.getLastName() != null) {
+            admin.setLastName(adminDetails.getLastName());
+        }
+        if(adminDetails.getAddress() != null){
+            admin.setAddress(adminDetails.getAddress());
+        }
+        if (adminDetails.getEmail() != null){
+            admin.setEmail(adminDetails.getEmail());
+        }
+        if (adminDetails.getUsername() != null){
+            admin.setUsername(adminDetails.getUsername());
+        }
+        if (adminDetails.getPassword() != null){
+            admin.setPassword(adminDetails.getPassword());
+        }
+
+
+        // Add other fields as necessary
+
+        return administratorRepository.save(admin);
     }
 
 

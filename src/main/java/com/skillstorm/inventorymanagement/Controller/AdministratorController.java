@@ -75,8 +75,7 @@ public class AdministratorController {
     public ResponseEntity<Administrator> updateAdmin(@PathVariable Long id, @RequestBody Administrator admin ) {
 
         try{
-            admin.setId(id);
-            Administrator updatedAdmin = administratorService.updateAdmin(admin);
+            Administrator updatedAdmin = administratorService.updateAdmin(id, admin);
             return ResponseEntity.ok(updatedAdmin);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

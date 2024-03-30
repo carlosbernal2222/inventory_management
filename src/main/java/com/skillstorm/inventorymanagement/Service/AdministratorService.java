@@ -17,7 +17,7 @@ public interface AdministratorService {
     Optional<Administrator> getAdminById(Long id) throws Exception;
 
     //Update Operations
-    Administrator updateAdmin(Administrator admin) throws Exception;
+    Administrator updateAdmin(Long id, Administrator admin) throws Exception;
 
     //Delete Operations
     boolean deleteAdmin(Long id);

@@ -74,8 +74,7 @@ public class ProductController {
     public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product ) {
 
         try{
-            product.setId(id);
-            Product updatedProduct = productService.updateProduct(product);
+            Product updatedProduct = productService.updateProduct(id, product);
             return ResponseEntity.ok(updatedProduct);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

@@ -20,10 +20,6 @@ public class Administrator {
     @Column(name = "admin_id")
     private long id;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "company_id")
-    private Company company;
-
     @Column(name = "first_name")
     @NotNull
     private String firstName;
@@ -46,6 +42,10 @@ public class Administrator {
 
     @Column
     private String password;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "company_id")
+    private Company company;
+
 
     public Administrator(Company company, String firstName, String lastName, String address, String email, String username, String password) {
     }
