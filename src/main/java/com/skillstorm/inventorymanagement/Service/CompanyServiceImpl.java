@@ -1,6 +1,5 @@
 package com.skillstorm.inventorymanagement.Service;
 
-import com.skillstorm.inventorymanagement.Model.Administrator;
 import com.skillstorm.inventorymanagement.Model.Company;
 import com.skillstorm.inventorymanagement.Repository.CompanyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,20 +32,40 @@ public class CompanyServiceImpl implements CompanyService{
     }
 
     @Override
-    public Company updateCompany(Company company) throws Exception {
-        //Logic to update company info Checks if the company exists before proceeding.
-        if(companyRepository.existsById(company.getId())){
-            return companyRepository.save(company);
-        } else {
-            throw new Exception("Company not found with ID: " + company.getId());
+    public Company updateCompany(Long id, Company companyDetails) throws Exception {
+        Company company = companyRepository.findById(id)
+                .orElseThrow(() -> new Exception("Company not found with ID: " + id));
+
+        // Update company attributes explicitly, checking for null
+        if (companyDetails.getName() != null) {
+            company.setName(companyDetails.getName());
         }
+        if (companyDetails.getAddress() != null) {
+            company.setAddress(companyDetails.getAddress());
+        }
+        if (companyDetails.getPhoneNumber() != null) {
+            company.setPhoneNumber(companyDetails.getPhoneNumber());
+        }
+        if (companyDetails.getIndustry() != null) {
+            company.setIndustry(companyDetails.getIndustry());
+        }
+        if (companyDetails.getDescription() != null) {
+            company.setDescription(companyDetails.getDescription());
+        }
+        // Add other fields as necessary
+
+        return companyRepository.save(company);
     }
 
-    @Override
-    public void deleteCompany(Long id) {
 
-        if(companyRepository.existsById(id)){
+    @Override
+    public boolean deleteCompany(Long id) {
+
+        if(companyRepository.existsById(id)) {
             companyRepository.deleteById(id);
+            return true;
+        }else {
+            return false;
         }
 
     }

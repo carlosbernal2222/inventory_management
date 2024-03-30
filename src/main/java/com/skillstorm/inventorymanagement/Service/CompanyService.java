@@ -10,7 +10,7 @@ public interface CompanyService {
     Company createCompany(Company company);
     List<Company> getAllCompanies();
     Optional<Company> getCompanyById(Long id) throws Exception;
-    Company updateCompany(Company company) throws Exception;
-    void deleteCompany(Long id);
+    Company updateCompany(Long id, Company companyDetails) throws Exception;
+    boolean deleteCompany(Long id);
 
 }

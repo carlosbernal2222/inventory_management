@@ -1,5 +1,7 @@
 package com.skillstorm.inventorymanagement.Model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -12,6 +14,9 @@ import java.util.Objects;
 @Entity
 @Data
 @NoArgsConstructor
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,11 +36,11 @@ public class Product {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @Column
-    private String type;
+    @Column(name = "sub_category")
+    private String subCategory;
 
-    @Column
-    private boolean refrigerated;
+    @Column(name = "refrigerated")
+    private boolean isRefrigerated;
 
     @Column
     private double weight;

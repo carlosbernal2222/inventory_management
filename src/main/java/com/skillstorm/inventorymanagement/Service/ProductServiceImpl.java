@@ -20,8 +20,9 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Optional<Product> getProductById(Long id) {
-        return productRepository.findById(id);
+    public Optional<Product> getProductById(Long id) throws Exception {
+
+        return Optional.of(productRepository.findById(id).orElseThrow());
     }
 
     @Override
@@ -35,8 +36,22 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public void deleteProduct(Long id) {
-        productRepository.deleteById(id);
+    public Product updateProduct(Product product) throws Exception{
+        if(productRepository.existsById(product.getId())){
+            return productRepository.save(product);
+        }else {
+            throw new Exception("Product not found with ID: " + product.getId());
+        }
+    }
+
+    @Override
+    public boolean deleteProduct(Long id) {
+        if(productRepository.existsById(id)){
+            productRepository.deleteById(id);
+            return true;
+        }else{
+            return false;
+        }
 
     }
 }
