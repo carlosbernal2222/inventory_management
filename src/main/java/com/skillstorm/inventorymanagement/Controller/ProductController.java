@@ -1,5 +1,6 @@
 package com.skillstorm.inventorymanagement.Controller;
 
+import com.skillstorm.inventorymanagement.DTO.ProductCreationDto;
 import com.skillstorm.inventorymanagement.Model.Administrator;
 import com.skillstorm.inventorymanagement.Model.Product;
 import com.skillstorm.inventorymanagement.Service.ProductService;
@@ -14,6 +15,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/products")
+@CrossOrigin(origins = "http://localhost:5173")
 public class ProductController {
 
     @Autowired
@@ -25,9 +27,9 @@ public class ProductController {
      * ************************************
      */
     @PostMapping
-    public ResponseEntity<Product> saveProduct(@RequestBody Product product){
-        Product newProduct = productService.saveProduct(product);
-        return ResponseEntity.ok(newProduct);
+    public ResponseEntity<Product> saveProduct(@RequestBody ProductCreationDto productCreationDto){
+        Product newProduct = productService.saveProduct(productCreationDto);
+        return new ResponseEntity<>(newProduct, HttpStatus.CREATED);
     }
 
 

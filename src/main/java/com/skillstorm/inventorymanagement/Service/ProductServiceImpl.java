@@ -1,7 +1,11 @@
 package com.skillstorm.inventorymanagement.Service;
 
+import com.skillstorm.inventorymanagement.DTO.ProductCreationDto;
+import com.skillstorm.inventorymanagement.Model.Category;
 import com.skillstorm.inventorymanagement.Model.Product;
+import com.skillstorm.inventorymanagement.Repository.CategoryRepository;
 import com.skillstorm.inventorymanagement.Repository.ProductRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +17,9 @@ public class ProductServiceImpl implements ProductService{
 
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
 
     @Override
     public List<Product> getAllProducts() {
@@ -26,7 +33,20 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Product saveProduct(Product product) {
+    public Product saveProduct(ProductCreationDto dto) {
+        Category category = categoryRepository.findById(dto.getCategoryId())
+                .orElseThrow(() -> new EntityNotFoundException("Category not found"));
+
+        Product product = new Product();
+
+        product.setCode(dto.getCode());
+        product.setName(dto.getName());
+        product.setDescription(dto.getDescription());
+        product.setSubCategory(dto.getSubCategory());
+        product.setRefrigerated(dto.isRefrigerated());
+        product.setWeight(dto.getWeight());
+        product.setCategory(category);
+
         return productRepository.save(product);
     }
 

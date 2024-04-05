@@ -1,5 +1,8 @@
 package com.skillstorm.inventorymanagement.Controller;
 
+import com.skillstorm.inventorymanagement.DTO.WarehouseCreationDto;
+import com.skillstorm.inventorymanagement.DTO.WarehouseUpdateDto;
+import com.skillstorm.inventorymanagement.Model.Company;
 import com.skillstorm.inventorymanagement.Model.Warehouse;
 import com.skillstorm.inventorymanagement.Service.WarehouseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,15 +15,16 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/warehouses")
+@CrossOrigin(origins = "http://localhost:5173")
 public class WarehouseController {
 
     @Autowired
     private WarehouseService warehouseService;
 
     @PostMapping
-    public ResponseEntity<Warehouse> createWarehouse(@RequestBody Warehouse warehouse){
-        Warehouse newWarehouse = warehouseService.createWarehouse(warehouse);
-        return ResponseEntity.ok(newWarehouse);
+    public ResponseEntity<Warehouse> createWarehouse(@RequestBody WarehouseCreationDto warehouseCreationDto){
+        Warehouse warehouse = warehouseService.createWarehouse(warehouseCreationDto);
+        return new ResponseEntity<>(warehouse, HttpStatus.CREATED);
     }
 
     @GetMapping
@@ -38,11 +42,10 @@ public class WarehouseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Warehouse> updateWarehouse(@PathVariable Long id, @RequestBody Warehouse warehouse){
+    public ResponseEntity<Warehouse> updateWarehouse(@PathVariable Long id, @RequestBody WarehouseUpdateDto warehouseUpdateDto){
 
         try{
-            warehouse.setId(id);
-            Warehouse updatedWarehouse = warehouseService.updateWarehouse(warehouse);
+            Warehouse updatedWarehouse = warehouseService.updateWarehouse(id, warehouseUpdateDto);
             return ResponseEntity.ok(updatedWarehouse);
         }catch (Exception e){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

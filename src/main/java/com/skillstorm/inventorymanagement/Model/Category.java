@@ -27,7 +27,7 @@ public class Category {
     private long id;
 
     @NotBlank(message = "Category must have a name")
-    @Column(unique = true)
+    @Column()
     private String name;
 
     @JsonIgnore

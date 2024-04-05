@@ -1,5 +1,7 @@
 package com.skillstorm.inventorymanagement.Service;
 
+import com.skillstorm.inventorymanagement.DTO.WarehouseCreationDto;
+import com.skillstorm.inventorymanagement.DTO.WarehouseUpdateDto;
 import com.skillstorm.inventorymanagement.Model.Warehouse;
 
 import java.util.List;
@@ -8,7 +10,7 @@ import java.util.Optional;
 public interface WarehouseService {
 
     // Create operation
-    Warehouse createWarehouse(Warehouse warehouse);
+    Warehouse createWarehouse(WarehouseCreationDto dto);
 
     // Read operations
     List<Warehouse> getAllWarehouses();
@@ -16,7 +18,7 @@ public interface WarehouseService {
 
 
     // Update operation
-    Warehouse updateWarehouse(Warehouse warehouse) throws Exception;
+    Warehouse updateWarehouse(Long id, WarehouseUpdateDto dto) throws Exception;
 
 
     // Delete operation

@@ -1,6 +1,8 @@
 package com.skillstorm.inventorymanagement.Model;
 
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.skillstorm.inventorymanagement.Validation.Address;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;

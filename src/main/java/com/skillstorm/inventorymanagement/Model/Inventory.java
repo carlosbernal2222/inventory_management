@@ -3,10 +3,14 @@ package com.skillstorm.inventorymanagement.Model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Inventory {
 
     @Id
@@ -15,23 +19,16 @@ public class Inventory {
     private long id;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", referencedColumnName = "product_id")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @ManyToOne
-    @JoinColumn(name = "warehouse_id", referencedColumnName = "warehouse_id")
+    @JoinColumn(name = "warehouse_id")
     private Warehouse warehouse;
 
     @Column(name = "quantity_available")
     @Min(0)
     private int quantityAvailable;
 
-    public Inventory() {}
-
-    public Inventory(Warehouse warehouse, Product product, int quantityAvailable) {
-        this.warehouse = warehouse;
-        this.product = product;
-        this.quantityAvailable = quantityAvailable;
-    }
 
 }

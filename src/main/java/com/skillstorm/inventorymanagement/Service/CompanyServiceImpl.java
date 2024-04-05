@@ -52,7 +52,6 @@ public class CompanyServiceImpl implements CompanyService{
         if (companyDetails.getDescription() != null) {
             company.setDescription(companyDetails.getDescription());
         }
-        // Add other fields as necessary
 
         return companyRepository.save(company);
     }

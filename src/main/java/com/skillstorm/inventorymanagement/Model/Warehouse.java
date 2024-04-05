@@ -11,16 +11,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class Warehouse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,17 +45,19 @@ public class Warehouse {
     @Column
     private String address;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "sourceWarehouse", cascade = CascadeType.ALL)
     private List<Transfer> transfersSent;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "destinationWarehouse", cascade = CascadeType.ALL)
     private List<Transfer> transfersReceived;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL)
-    private List<Inventory> inventoryList;
+    private List<Inventory> inventory;
 
     @Column
-    @Max(100000)
     @Min(0)
     private int capacity;
 
@@ -64,16 +65,5 @@ public class Warehouse {
     private boolean environmentControl;
 
 
-
-
-
-
-//    public void addItems(Product item){
-//        if(items == null){
-//            items = new ArrayList<>();
-//        }else{
-//            items.add(item);
-//        }
-//    }
 }
 

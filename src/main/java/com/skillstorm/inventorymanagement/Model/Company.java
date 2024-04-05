@@ -27,18 +27,20 @@ public class Company {
 
     @Column
     private String name;
+
     @Column
     @Address
     private String address;
 
     @Column(name="phone_number")
     private String phoneNumber;
+
     @Column
     private String industry;
+
     @Column
     private String description;
 
-//    @JsonIgnore
     @OneToMany(targetEntity = Warehouse.class, mappedBy = "company", cascade = CascadeType.ALL)
     private List<Warehouse> warehouses;
 
