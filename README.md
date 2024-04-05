@@ -6,8 +6,7 @@ This Inventory Management System is designed to simplify the process of managing
 
 - **Product Management:** Add, update, and remove products in the inventory with ease.
 - **Stock Tracking:** Keep an eye on stock levels to avoid overstocking or stockouts.
-- **Inventory Analysis:** Generate reports for inventory levels, sales, and order history to make informed decisions.
-- **Data Centralization:** Store all your inventory information in a centralized database for easy access and management.
+
 
 ## Getting Started
 
