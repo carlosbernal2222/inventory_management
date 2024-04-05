@@ -18,6 +18,8 @@ import java.util.Optional;
 @Service
 public class WarehouseServiceImpl implements WarehouseService{
 
+
+    //Dependency Injection of the repo interfaces
     @Autowired
     WarehouseRepository warehouseRepository;
 
@@ -29,11 +31,14 @@ public class WarehouseServiceImpl implements WarehouseService{
     @Override
     public Warehouse createWarehouse(WarehouseCreationDto dto) {
 
+        // Retrieving and validating the existence of Company and Category entities
+        // before creating a new Warehouse
         Company company = companyRepository.findById(dto.getCompanyId())
                 .orElseThrow(() -> new EntityNotFoundException("Company not found"));
         Category category = categoryRepository.findById(dto.getCategoryId())
                 .orElseThrow(() -> new EntityNotFoundException("Category not found"));
 
+        // Setting up a new Warehouse entity with details from DTO
         Warehouse warehouse = new Warehouse();
 
         warehouse.setName(dto.getName());
@@ -43,6 +48,7 @@ public class WarehouseServiceImpl implements WarehouseService{
         warehouse.setCompany(company);
         warehouse.setCategory(category);
 
+        // Saving the new Warehouse entity to the repository
         return warehouseRepository.save(warehouse);
     }
 
@@ -53,6 +59,8 @@ public class WarehouseServiceImpl implements WarehouseService{
 
     @Override
     public Optional<Warehouse> getWarehouseById(Long id) throws Exception {
+
+        // Attempting to retrieve a Warehouse by ID, throwing an exception if not found
         return Optional.of(warehouseRepository.findById(id)
                 .orElseThrow(() -> new Exception("Warehouse not found with ID: "  + id)));
     }
@@ -60,7 +68,7 @@ public class WarehouseServiceImpl implements WarehouseService{
     @Override
     public Warehouse updateWarehouse(Long id, WarehouseUpdateDto dto) throws Exception {
 
-        // First, fetch the existing warehouse you wish to update
+        // Fetch the existing warehouse you wish to update
         Warehouse warehouse = warehouseRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Warehouse not found for this id :: " + id));
 
@@ -69,8 +77,7 @@ public class WarehouseServiceImpl implements WarehouseService{
         Category category = categoryRepository.findById(dto.getCategoryId())
                 .orElseThrow(() -> new EntityNotFoundException("Category not found"));
 
-
-
+        // Updating the Warehouse entity with new details from DTO
         warehouse.setName(dto.getName());
         warehouse.setAddress(dto.getAddress());
         warehouse.setCapacity(dto.getCapacity());
@@ -85,6 +92,8 @@ public class WarehouseServiceImpl implements WarehouseService{
 
     @Override
     public boolean deleteWarehouse(Long id) {
+
+        // Checks if a Warehouse with the specified ID exists, and if so, deletes it
         if(warehouseRepository.existsById(id)){
             warehouseRepository.deleteById(id);
             return true;

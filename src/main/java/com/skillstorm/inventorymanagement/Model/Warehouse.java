@@ -45,14 +45,17 @@ public class Warehouse {
     @Column
     private String address;
 
+    //Not Implemented
     @JsonIgnore
     @OneToMany(mappedBy = "sourceWarehouse", cascade = CascadeType.ALL)
     private List<Transfer> transfersSent;
 
+    //Not implemented
     @JsonIgnore
     @OneToMany(mappedBy = "destinationWarehouse", cascade = CascadeType.ALL)
     private List<Transfer> transfersReceived;
 
+    //Not implemented
     @JsonIgnore
     @OneToMany(mappedBy = "warehouse", cascade = CascadeType.ALL)
     private List<Inventory> inventory;

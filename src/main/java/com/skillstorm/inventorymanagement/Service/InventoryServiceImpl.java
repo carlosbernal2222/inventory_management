@@ -84,6 +84,7 @@ public class InventoryServiceImpl implements InventoryService{
 
     @Override
     public void updateProductQuantityInWarehouse(Long productId, Long warehouseId, Integer newQuantity) throws Exception {
+
         // Fetch the product and warehouse from the database
         Optional<Product> optionalProduct = productService.getProductById(productId);
         Optional<Warehouse> optionalWarehouse = warehouseService.getWarehouseById(warehouseId);
@@ -133,12 +134,11 @@ public class InventoryServiceImpl implements InventoryService{
                 .orElseThrow(() -> new RuntimeException("Inventory entry not found"));
 
         if (inventory.getQuantityAvailable() > 0) {
-            // Assuming business logic might require adjusting this condition,
-            // like setting to a specific quantity or removing the entry altogether
-            inventory.setQuantityAvailable(0); // Adjust based on requirement
+
+            inventory.setQuantityAvailable(0);
             inventoryRepository.save(inventory);
         } else {
-            // Optionally, if quantity is already 0, consider if you want to delete the record
+            //  if quantity is already 0, delete the record
             inventoryRepository.delete(inventory);
         }
     }

@@ -25,11 +25,13 @@ public class AdministratorServiceImpl implements AdministratorService {
         return administratorRepository.save(admin);
     }
 
+    // Retrieves a list of all registered administrators.
     @Override
     public List<Administrator> getAllAdmins() {
         return administratorRepository.findAll();
     }
 
+    // Finds a specific administrator by their ID.
     @Override
     public Optional<Administrator> getAdminById(Long id) throws Exception {
 
@@ -37,8 +39,10 @@ public class AdministratorServiceImpl implements AdministratorService {
                 .orElseThrow(() -> new Exception("Administrator not found with ID: " + id)));
     }
 
+    // Updates the details of an existing administrator.
     @Override
     public Administrator updateAdmin(Long id, Administrator adminDetails) throws Exception {
+
         // Logic to update an admin. Checks if the admin exists before proceeding.
         Administrator admin = administratorRepository.findById(id)
                 .orElseThrow(() -> new Exception("Administrator not found with ID: " + id));
@@ -63,13 +67,15 @@ public class AdministratorServiceImpl implements AdministratorService {
         }
 
 
-        // Add other fields as necessary
+
 
         return administratorRepository.save(admin);
     }
 
 
 
+
+    // Deletes an administrator from the system based on their ID.
     @Override
     public boolean deleteAdmin(Long id) {
         if(administratorRepository.existsById(id)){
