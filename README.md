@@ -17,7 +17,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 - Java 11 or higher
 - Maven
-- MySQL (for the database)
+- Postgres (for the database)
 
 ### Installation
 
